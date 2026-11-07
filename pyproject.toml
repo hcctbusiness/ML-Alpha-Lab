@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ml-alpha-lab"
+version = "0.1.0"
+description = "HCCT Group – Financial machine learning done right: triple-barrier labels, purged/embargoed CV, meta-labelling, LightGBM and overfitting diagnostics."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Harry CHU", email = "257962672+hcctbusiness@users.noreply.github.com" }]
+maintainers = [{ name = "HCCT Group" }]
+keywords = ["quant", "machine learning", "financial machine learning", "purged cross-validation", "meta-labelling", "lightgbm", "deflated sharpe", "backtest overfitting"]
+dependencies = [
+  "numpy>=1.24",
+  "pandas>=2.1",
+  "scipy>=1.10",
+  "statsmodels>=0.14",
+  "scikit-learn>=1.3",
+  "lightgbm>=4.0",
+  "matplotlib>=3.7",
+  "quantcore[data] @ git+https://github.com/hcctbusiness/QuantCore.git",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7"]
+
+[project.urls]
+Homepage = "https://github.com/hcctbusiness/ML-Alpha-Lab"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

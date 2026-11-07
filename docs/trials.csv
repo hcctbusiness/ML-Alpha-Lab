@@ -1,0 +1,23 @@
+#,stage,configuration,OOS Sharpe (ann.),note
+1,grid (walk-forward L/S quintile),LGBM leaves=7 trees=100 min_leaf=200,-0.3978,
+2,grid (walk-forward L/S quintile),LGBM leaves=7 trees=100 min_leaf=1000,-0.3282,
+3,grid (walk-forward L/S quintile),LGBM leaves=7 trees=300 min_leaf=200,-0.1676,
+4,grid (walk-forward L/S quintile),LGBM leaves=7 trees=300 min_leaf=1000,-0.1672,
+5,grid (walk-forward L/S quintile),LGBM leaves=15 trees=100 min_leaf=200,-0.0874,
+6,grid (walk-forward L/S quintile),LGBM leaves=15 trees=100 min_leaf=1000,-0.0143,
+7,grid (walk-forward L/S quintile),LGBM leaves=15 trees=300 min_leaf=200,0.0648,pre-specified main model
+8,grid (walk-forward L/S quintile),LGBM leaves=15 trees=300 min_leaf=1000,-0.1111,
+9,grid (walk-forward L/S quintile),LGBM leaves=31 trees=100 min_leaf=200,-0.2301,
+10,grid (walk-forward L/S quintile),LGBM leaves=31 trees=100 min_leaf=1000,-0.1558,
+11,grid (walk-forward L/S quintile),LGBM leaves=31 trees=300 min_leaf=200,0.1539,
+12,grid (walk-forward L/S quintile),LGBM leaves=31 trees=300 min_leaf=1000,-0.066,
+13,grid (walk-forward L/S quintile),Logit C=0.01,-0.3951,
+14,grid (walk-forward L/S quintile),Logit C=1,-0.3705,
+15,grid (walk-forward L/S quintile),Logit C=100,-0.373,
+16,grid (walk-forward L/S quintile),Momentum 12-1 rule,-0.0386,
+17,variant,LightGBM long-only top quintile,1.0311,
+18,variant,Momentum long-only top quintile,0.8772,
+19,benchmark,Equal-weight universe,0.9384,"benchmark, not a candidate"
+20,meta-labelling,"Primary: time-series momentum side, equal weight",0.4319,
+21,meta-labelling,Primary + LightGBM meta-label bet sizing,0.4495,
+22,development,"Pre-run check: LightGBM main config, 4 CV schemes (accuracy/AUC only)",,looked at once while benchmarking speed; no setting changed afterwards
