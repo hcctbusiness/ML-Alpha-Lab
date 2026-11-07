@@ -41,14 +41,16 @@ def cv_comparison(tab: pd.DataFrame, base_rate: float, path):
             v = [tab.loc[(m, s), col] for m in models]
             bars = ax.bar(x + (j - (len(schemes) - 1) / 2) * wd, v, wd, color=PALETTE[j], label=s)
             for b, val in zip(bars, v):
-                ax.text(b.get_x() + b.get_width() / 2, val, f"{val:.2f}", ha="center", va="bottom" if val >= ref else "top", fontsize=7)
+                up = val >= 0
+                ax.annotate(f"{val:.2f}", (b.get_x() + b.get_width() / 2, val), xytext=(0, 2 if up else -2),
+                            textcoords="offset points", ha="center", va="bottom" if up else "top", fontsize=7)
         ax.axhline(ref, color="k", lw=0.8, ls="--")
         ax.set_xticks(x, models)
         ax.set_title(lab, loc="left", fontweight="bold", fontsize=10.5)
         _style(ax)
         if col != "L/S Sharpe":
             lo = min(tab[col].min(), ref) - 0.03
-            ax.set_ylim(lo, tab[col].max() + 0.04)
+            ax.set_ylim(lo, tab[col].max() + 0.05)
     axes[0].legend(frameon=False, fontsize=8.5, loc="upper left")
     fig.suptitle("Same models, four validation schemes: shuffled K-fold leaks, purged CV does not",
                  fontsize=13.5, fontweight="bold", x=0.01, ha="left")
